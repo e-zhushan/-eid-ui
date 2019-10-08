@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% block content %}
+
+<html>
+<head>  
+  <title>竹山數位鎮民 - 小鎮星球</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+{% include 'navbar.html' %} <br>
+
+<style>
+.card-shadow{
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.16);
+}
+
+.border-warning{
+    border-width: 2px;
+}
+
+.card-bg-eid{
+  background-color: white;
+}
+
+.card-img-cover {
+    height: 100%;
+    object-fit: cover;
+}
+
+.hr-style{
+border-color:#ffc107;
+width:85%
+}
+
+</style>
+
+<!-- townee -->
+{%for index in range(list_townee | length)%}
+<div class="container d-flex justify-content-center">
+  <div class="card mb-3 card-bg-eid rounded-0 card-shadow border-warning" style="max-width: 80%">
+    <div class="row no-gutters">
+      <div class="col-md-7">
+        <div class="card-body">
+            <div class="h6 text-warning">
+                <p class="mr-3  mb-0">數位鎮民身份證</p>
+                <p>The eID card for digital townee.</p>
+              </div>
+	  <!--<img src="{{list_townee[index]['logo']}}">-->
+	  <p class="card-text">證號： {{list_townee[index]['name']}}</p>
+	  <p class="card-text">電話： {{list_townee[index]['tel']}}</p>
+	  <p class="card-text">職業： <img src="{{list_townee[index]['logo']}}" class="rounded-circle" width="15%" height="15%"></p>
+          <small class="text-muted">地址： {{list_townee[index]['address']}}</small>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <img src={{list_townee[index]['pic']}} class="card-img card-img-cover" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="hr-style">
+{% endfor %}
+
+</body>
+</html>
+
+{% endblock %}
+
